@@ -1,9 +1,11 @@
 function turnon() {
+    setInterval(position, 4000);
     document.getElementById('barrier1').style.animationPlayState = "running";
     document.getElementById('barrier2').style.animationPlayState = "running";
 }
 
 function turnoff() {
+    clearInterval(position)
     document.getElementById('barrier1').style.animationPlayState = "paused";
     document.getElementById('barrier2').style.animationPlayState = "paused";
 }
@@ -36,24 +38,23 @@ function moveBird(event){
     }
 } 
 
-// function position() {
-//     let barrier1Left = parseInt(window.getComputedStyle(barrier1).getPropertyValue("left"));
-//     let barrier2Left = parseInt(window.getComputedStyle(barrier2).getPropertyValue("left"));
-//     if (barrier1Left >= 900 && barrier1Left <= 999) { 
-//         let randomNumber = Math.floor(Math.random() * 10) + 1;
-//         let barrier1Top = parseInt(window.getComputedStyle(barrier1).getPropertyValue("top"));
-//         let height1 = randomNumber*10+barrier1Top;
-//         document.getElementById('barrier1').style.top = `${height1}px`;
-//     }
-//     else if(barrier2Left >= 900 && barrier2Left <= 999){
-//         let randomNumber = Math.floor(Math.random() * 10) + 1;
-//         let barrier2Bottom = parseInt(window.getComputedStyle(barrier2).getPropertyValue("bottom"));
-//         let height1 = randomNumber*10+barrier2Bottom;
-//         document.getElementById('barrier1').style.bottom = `${height1}px`;
-//     }
-
-// }
-// setInterval(position, 100); 
+function position() {
+    let barrier1 = document.querySelector("#barrier1");
+    let barrier2 = document.querySelector("#barrier2");
+    let barrier1Height = getRandomeNumber(100, 300);
+    let barrier1Top = 545 - barrier1Height;
+    barrier1.style.height = `${barrier1Height}px`;
+    barrier1.style.top = `${barrier1Top}px`;
+  
+    let barrier2Height = getRandomeNumber(100, 300);
+    let barrier2Bottom = barrier2Height + 70;
+    barrier2.style.height = `${barrier2Height}px`;
+    barrier2.style.bottom = `${barrier2Bottom}px`;
+  }
+  function getRandomeNumber(min, max) {
+    return Math.round(Math.random() * (max - min) + min);
+  }
+  
 
 
 let score = 0;
