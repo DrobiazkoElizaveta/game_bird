@@ -1,5 +1,5 @@
 function turnon() {
-    setInterval(position, 4000);
+    setInterval(position, 5500);
     document.getElementById('barrier1').style.animationPlayState = "running";
     document.getElementById('barrier2').style.animationPlayState = "running";
 }
@@ -39,19 +39,14 @@ function moveBird(event){
 } 
 
 function position() {
-    let barrier1 = document.querySelector("#barrier1");
-    let barrier2 = document.querySelector("#barrier2");
-    let barrier1Height = getRandomeNumber(100, 300);
-    let barrier1Top = 545 - barrier1Height;
-    barrier1.style.height = `${barrier1Height}px`;
-    barrier1.style.top = `${barrier1Top}px`;
-  
-    let barrier2Height = getRandomeNumber(100, 300);
-    let barrier2Bottom = barrier2Height + 70;
-    barrier2.style.height = `${barrier2Height}px`;
-    barrier2.style.bottom = `${barrier2Bottom}px`;
-  }
-  function getRandomeNumber(min, max) {
+  const barrier1 = document.querySelector("#barrier1");
+  const barrier2 = document.querySelector("#barrier2");
+  let barrier1Top = getRandomeNumber(240, 380);
+  let barrier2Bottom = getRandomeNumber(370, 525);
+  barrier1.style.top = `${barrier1Top}px`;
+  barrier2.style.bottom = `${barrier2Bottom}px`;
+}
+function getRandomeNumber(min, max) {
     return Math.round(Math.random() * (max - min) + min);
   }
   
